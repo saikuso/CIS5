@@ -1,19 +1,21 @@
 /*	PROGRAMMER: Ace Buenavides
- *	PROGRAM TITLE: Grade Calculator Program [v.2.0]
+ *	PROGRAM TITLE: Grade Calculator Program
+ *	PROGRAM VERSION: [v2.0]
  *	PROGRAM DESCRIPTION: Will calculate total course grade by using user-inputted values
  *  and calculated with differing category percentage weights
  *	PROGRAM FEATURES: User-entered values for assignments, quizzes, discussion boards, and
  *  final exam grades. Includes 
  *	DATE: 16MAR2017
  
-
  *	Potential Issues:
  * 	1) Negative values (Input Validation) -Not implemented-
  *	2) Text data inputs (Input Validation) -Not implemented-
-
- * 	Changelog:
- *	v.2.0 - Added features - new named constants, iomanip manipulators, and if/else statements
+ 		-This breaks the program.
+ 
+ *	Changelog:
+ *	[v.2.0] - Added features - new named constants, iomanip manipulators, and if/else statements
  *	to output the letter grade as well based on the new named constants
+ *	[v.1.0] - Initial version
  */
 
 
@@ -24,14 +26,12 @@
 // Denotes that we want to use the standard namespace
 using namespace std;
 
-// Named Constant Declarations
-	
+// Named Constant Declarations	
 // Used for calculating overall final grade
 const float ASSIGN_WEIGHT = .40;
 const float QUIZ_WEIGHT = .20;
 const float DISC_WEIGHT = .10;
 const float FINAL_WEIGHT = .30;
-	
 // Used for letter grade determination
 const float MIN_A = 90;
 const float MIN_B = 80;
