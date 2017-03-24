@@ -20,7 +20,7 @@ int main()
 	cout << "4. Convert Celsius to Kelvin" << endl;
 	cout << "5. Convert Kelvin to Fahrenheit" << endl;
 	cout << "6. Convert Kelvin to Celsius" << endl;
-	cout << "Q. Quit Program" << endl;
+	cout << "7. Quit Program" << endl;
 	cout << endl;
 	
 	// Prompt for menu choice
@@ -35,26 +35,34 @@ int main()
 	// Switch block for our menu choices
 	switch (choice)
 	{
-		case '1': 	cout << "Enter Fahrenheit degrees: " << endl;
-					cin >> fahrenheit;
+		// Case for Fahrenheit to Celsius
+		case '1': 	cout << "Enter Fahrenheit degrees: ";
+					cin >> fahrenheit; 
+					cout << endl;
 					celsius = (fahrenheit - 32) / 1.8;
 					cout << setw(9) << fahrenheit << " degrees fahrenheit is ";
 					cout << setw(9)	<< celsius << " degrees celsius" << endl;
 					break;
-		case '2':	cout << "Enter Fahrenheit degrees: " << endl;
+		// Case for Fahrenheit to Kelvin
+		case '2':	cout << "Enter Fahrenheit degrees: ";
 					cin >> fahrenheit;
+					cout << endl;
 					kelvin = (fahrenheit + 459.67) / 1.8;
 					cout << setw(9) << fahrenheit << " degrees fahrenheit is ";
 					cout << setw(9) << kelvin << " degrees kelvin" << endl;
 					break;
-		case '3':	cout << "Enter Celsius degrees: " << endl;
+		// Case for Celsius to Fahrenheit
+		case '3':	cout << "Enter Celsius degrees: ";
 					cin >> celsius;
+					cout << endl;
 					// fahrenheit = 															// Need the formula (C to F)
 					cout << setw(9) << celsius << "degrees celsius is ";
 					cout << setw(9) << fahrenheit << "degrees fahrenheit" << endl;
 					break;
-		case '4':	cout << "Enter Celsius degrees: " << endl;
+		// Case for Celsius to Kelvin
+		case '4':	cout << "Enter Celsius degrees: ";
 					cin >> celsius;
+					cout << endl;
 					// kelvin = 																// Need the formula (C to K)
 					cout << setw(9) << celsius << "degrees celsius is ";
 					cout << setw(9) << kelvin << "degrees kelvin" << endl;
