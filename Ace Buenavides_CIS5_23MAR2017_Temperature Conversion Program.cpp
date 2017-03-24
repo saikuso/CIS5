@@ -3,6 +3,10 @@
 #include <limits>
 using namespace std;
 
+
+// To Be Fixed
+//	1) Invalid User Inputs on Temperatures
+
 int main()
 {
 
@@ -26,6 +30,7 @@ int main()
 	
 	// Output our menus
 	cout << "Temperature Converter" << endl;
+	cout << "by Ace Buenavides" << endl;
 	cout << "=====================" << endl;
 	cout << endl;
 	
@@ -102,6 +107,7 @@ int main()
 		// Case for Exiting the Program
 		case '7':	cout << endl << "You have exited the program." << endl;
 					break;
+		// Default Case
 		default: // the case in which the user does not choose 1, 2, 3, 4, 5, 6, q, or Q!
 					cout << "You did not enter a valid choice!";
 					
