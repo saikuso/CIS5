@@ -12,19 +12,39 @@
 				 // the time function as a seed base.
 using namespace std;
 
+
+
 int main()
 {
-	// Generate and Output 20 Random Numbers between 1 and 10
-	int count=1;
+	// Variable Declarations
+	int guess = 0;
+	
+	// Opening Statement
+	cout << "RANDOM NUMBER GUESSING GAME\n\n";
+	cout << "===========================\n\n";
+	cout << "You have 10 tries to guess a number from\n";
+	cout << "1 to 1000. Good luck!\n\n";
+	
+	// Interactive User Inputs
+	cout << "Enter what you guess the generated number is: " << endl;
+	cin >> guess;
+	
+	cout << guess;
+	
+	
+	
+	int count = 1;
 	
 	// Seed Random Generator
 	srand(time(0));
 	
+	
 	while ( count <= 10 )
 	{
-		int rnd = 1+rand() % 1000;
-		srand(time(0) + rnd);
-		cout << rnd << endl;
+		int randomgen = 1+rand() % 1000; // This holds the randomly generated number (1-1000 range)
+		srand(time(0) + randomgen);
+		cout << randomgen << endl;
 		count++;
 	}
+	
 }
