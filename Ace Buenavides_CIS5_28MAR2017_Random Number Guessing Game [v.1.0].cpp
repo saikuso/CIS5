@@ -54,8 +54,11 @@ int main()
 			cout << "Your guess is too low. Try again.\n" << endl;
 		else if (userguess > number)
 			cout << "Your guess is too high. Try again.\n" << endl;
-		else
+		else if (userguess == number)
 			cout << "You're on the money! You guessed it right!" << endl;
+		else
+			break;
+		
 	} while (userguess != number);
 	
 	/*
