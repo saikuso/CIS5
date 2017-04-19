@@ -1,13 +1,9 @@
-// INCOMPLETE PROGRAM //
-// INTEGER RANGE FUNCTION NOT WORKING //
-
-
 #include <iostream>
 #include <string>
 #include <limits>
 using namespace std;
 
-//-------------Function Prototypes--------------
+// function prototypes
 int getInteger(string prompt);
 float getFloat(string prompt);
 int getIntegerRange(int min, int max);
@@ -16,17 +12,16 @@ void test_getInteger();
 void test_getFloat();
 void test_getIntegerRange();
 
-//-------------Start of Main Function-----------
 int main()
 {
 	test_getInteger();
 	test_getFloat();
-	//test_getIntegerRange();
-	return 0;	
-} // end of main function
+	test_getIntegerRange();	
+	
+	return 0;
+}
 
-
-//-------------Function Definitions-------------
+// function definitions
 int getInteger(string prompt)
 {
 	int value;
@@ -36,7 +31,7 @@ int getInteger(string prompt)
 		// boolean flag variable to store the >> operator result in reading the input
 		bool validInput;
 		
-		// output the prompt
+		// output the prompt		
 		cout << prompt;
 		
 		// the >> operator with the cin object will return true if a value was successfully extracted
@@ -44,19 +39,27 @@ int getInteger(string prompt)
 		// characters are entered
 		cin >> value;
 		validInput = cin.good();
+		cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
 		
 		// if validInput is true, return from the function with our value from user
-		if ( validInput ) return value;
+		if (validInput) return value;
 		else
 		{
+			// otherwise, let the user know they did an invalid entry
 			cout << "Invalid Entry! " << endl;
+			
+			// clear the cin object's status (this clears the bad input flag)
 			cin.clear();
+			
+			// if we do not include the following statement, the while loop gets stuck with the
+			// invalid input and keeps looping forever, the fix is to clear (ignore) all of the input
+			// that is in the buffer. 
+			// the statement ignores either the number of characters returned by the max() function (which
+			// is a 64 bit integer, OR the '\n' return/newline character; which ever happens first. hint:
+			// do 2 to the 64 power on a calculator and that is what max() returns, ALOT OF CHARACTERS!!!
 			cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
 		}
 	} while (true);
-	
-	cout << "You entered the value of " << value << endl;
-	return 0;
 } // end of getInteger function
 
 float getFloat(string prompt)
@@ -65,24 +68,38 @@ float getFloat(string prompt)
 	
 	do 
 	{
+		// boolean flag variable to store the >> operator result in reading the input
 		bool validInput;
-	
+		
+		// output the prompt		
 		cout << prompt;
 		
+		// the >> operator with the cin object will return true if a value was successfully extracted
+		// from the keyboard and stored in the variable, otherwise it will return false if non valid
+		// characters are entered
 		cin >> value;
 		validInput = cin.good();
+		cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
 		
-		if ( validInput ) return value;
+		// if validInput is true, return from the function with our value from user
+		if (validInput) return value;
 		else
 		{
+			// otherwise, let the user know they did an invalid entry
 			cout << "Invalid Entry! " << endl;
+			
+			// clear the cin object's status (this clears the bad input flag)
 			cin.clear();
+			
+			// if we do not include the following statement, the while loop gets stuck with the
+			// invalid input and keeps looping forever, the fix is to clear (ignore) all of the input
+			// that is in the buffer. 
+			// the statement ignores either the number of characters returned by the max() function (which
+			// is a 64 bit integer, OR the '\n' return/newline character; which ever happens first. hint:
+			// do 2 to the 64 power on a calculator and that is what max() returns, ALOT OF CHARACTERS!!!
 			cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
 		}
 	} while (true);
-	
-	cout << "You entered the value of " << value << endl;
-	return 0;
 } // end of getFloat function
 
 int getIntegerRange(int min, int max)
@@ -91,29 +108,41 @@ int getIntegerRange(int min, int max)
 	
 	do 
 	{
+		// boolean flag variable to store the >> operator result in reading the input
 		bool validInput;
 		
-		cout << "Enter an integer between " << min << " and " << max << ":";
+		// output the prompt		
+		cout << "Enter an integer between " << min << " and " << max << ": ";
 		
+		// the >> operator with the cin object will return true if a value was successfully extracted
+		// from the keyboard and stored in the variable, otherwise it will return false if non valid
+		// characters are entered
 		cin >> value;
 		validInput = cin.good();
 		cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
 		
-		if ((validInput) && ( value >= min && value <= max)) return value;
+		// if validInput is true, return from the function with our value from user
+		if ((validInput) && (value >= min && value <= max)) return value;
 		else
 		{
+			// otherwise, let the user know they did an invalid entry
 			cout << "Invalid Entry! Must be between " << min << " and " << max << ".";
 			cout << endl;
+			
+			// clear the cin object's status (this clears the bad input flag)
 			cin.clear();
+			
+			// if we do not include the following statement, the while loop gets stuck with the
+			// invalid input and keeps looping forever, the fix is to clear (ignore) all of the input
+			// that is in the buffer. 
+			// the statement ignores either the number of characters returned by the max() function (which
+			// is a 64 bit integer, OR the '\n' return/newline character; which ever happens first. hint:
+			// do 2 to the 64 power on a calculator and that is what max() returns, ALOT OF CHARACTERS!!!
 			cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
 		}
 	} while (true);
-	
-	cout << "You entered the value of " << value << endl;
-	return 0;
 } // end of getIntegerRange function
 
-//--------------VOID FUNCTIONS----------------
 void test_getInteger()
 {
 	cout << "Testing getInteger...." << endl;
@@ -144,46 +173,18 @@ void test_getFloat()
 	cout << "You entered " << value1 << endl;
 }
 
-/*
 void test_getIntegerRange()
 {
 	cout << "Testing getIntegerRange...." << endl;
 	
 	int value1;
-	value1 = getIntegerRange(int min, int max);
+	value1 = getIntegerRange(-100,100);
 	cout << "You entered " << value1 << endl;
 	
-	value1 = getIntegerRange(int min, int max);
+	value1 = getIntegerRange(1,1000);
 	cout << "You entered " << value1 << endl;
 	
-	value1 = getIntegerRange(int min, int max);
+	value1 = getIntegerRange(0, 5);
 	cout << "You entered " << value1 << endl;
 }
-*/
 
-
-// KITTY CAT TEST CODE TEMPLATE//
-/*
-int main()
-{
-	int value;
-	
-	do 
-	{
-		bool validInput;
-		cout << "Enter an integer value between 1 and 10: ";
-		validInput = cin >> value;
-		
-		if ( (value >= 1 && value <= 10) && validInput ) break;
-		else
-		{
-			cout << "Invalid Entry! " << endl;
-			cin.clear();
-			cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
-		}
-	} while (true);
-	
-	cout << "You entered the value of " << value << endl;
-	return 0;
-}
-*/
