@@ -6,12 +6,27 @@
 */
 
 #include <iostream>
+#include <limits>
+#include <string>
 using namespace std;
 
+/* Used Variables
+
+base
+exponent
+result
+number1
+number2
+
+
+*/
+
 // Function Prototypes
-void integerPower();
+void integerPower(int x, int n);
 void gcd();
-void kitty();
+void getInteger();
+
+// Variable Initializations
 
 // Main Function
 int main()
@@ -25,7 +40,7 @@ int main()
 	cout << "the first function named integerPower which\n";
 	cout << "returns the value of a base and an exponent\n";
 	cout << "and a second function named gcd which returns\n";
-	cout << "the greatest common divisor of the numbers, number1\n";
+	cout << "the greatest common divisor of two numbers, number1\n";
 	cout << "and number2 using Euclid's Algorithm to find the gcd\n\n";
 	
 	cout << "============================================\n\n";
@@ -42,8 +57,8 @@ int main()
 	
 	switch (choice)
 	{
-		case '1':		// INSERT EXPONENTIATON FUNCTION HERE
-		case '2':		// INSERT GCD FUNCTION HERE
+		case '1':	void integerPower(int x, int n); // INSERT EXPONENTIATION FUNCTION CALL HERE
+		case '2':	gcd(); // INSERT GCD FUNCTION CALL HERE
 		case '3':	cout << endl << "You have exited the program." << endl;
 					break;
 		default: 	cout << "You did not enter a valid choice! The program is terminating.";
@@ -53,67 +68,70 @@ int main()
 
 
 
-// Function Definitions
 
 
-// ----------------------
-// Integer Powers
-void integerPower()
+
+// Exponentiation by Squaring  Function Definition
+void integerPower(int x, int n)
 {
+	cout << "Please enter a number for the base: ";
+	cin >> x;
+	cout << "Please enter a number for the exponent: ";
+	cin >> n;
+	int	result = 1;
+	for ( x = 0; x < n; x++)
+	{
+		result = result * x;
+	}
+	return (result);
+} // End of Exponentiation by Squaring Function
+
+
+// Euclid's Algorithm Function Definition
+void gcd()
+{
+
+} // End of Euclid Function
+
+
+// Kitty Cat Test Function Definition
+int getInteger(string prompt)
+{
+	int value;
 	
-} // End of Integer Powers Void Function
-// ----------------------
-
-// ----------------------
-// Euclid's Algorithm
-void gcd( )
-{
-	
-} // End of Euclid Void Function
-// ----------------------
-
-// ----------------------
-// Kitty Cat Test
-void kitty()
-{
-	
-} // End of Kitty Cat Test Void Function
-// ----------------------
-
-
-
-
-
-
-
-
-/*----------------CODE TEMPLATE---------------
-// Euclid's Algorithm (GCD)
-void int gcd( int m, int n)
-{
-    if(!m || !n)
-        return(0);
-
-    for(unsigned int r = m%n; r; m = n, n = r, r = m%n);
-
-    return(n);
-}
-
-
-int main()
-{
-    printf("50, 5: %d\n", gcd(50,5));
-    printf("5, 50: %d\n", gcd(5,50));
-    printf("34534, 567568: %d\n", gcd(34534, 567568));
-
-    return(0);
-}
-----------------------------------------------
-// Power Iterative
-power_iterative (x,n)
-	result = 1
-	for ( i = 0; i < n; i++)
-		result = result * x
-	return result
-----------------------------------------------
-*/
+	do 
+	{
+		// boolean flag variable to store the >> operator result in reading the input
+		bool validInput;
+		
+		// output the prompt		
+		cout << prompt;
+		
+		// the >> operator with the cin object will return true if a value was successfully extracted
+		// from the keyboard and stored in the variable, otherwise it will return false if non valid
+		// characters are entered
+		cin >> value;
+		validInput = cin.good();
+		cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
+		
+		// if validInput is true, return from the function with our value from user
+		if (validInput) return value;
+		else
+		{
+			// otherwise, let the user know they did an invalid entry
+			cout << "Invalid Entry! " << endl;
+			
+			// clear the cin object's status (this clears the bad input flag)
+			cin.clear();
+			
+			// if we do not include the following statement, the while loop gets stuck with the
+			// invalid input and keeps looping forever, the fix is to clear (ignore) all of the input
+			// that is in the buffer. 
+			// the statement ignores either the number of characters returned by the max() function (which
+			// is a 64 bit integer, OR the '\n' return/newline character; which ever happens first. hint:
+			// do 2 to the 64 power on a calculator and that is what max() returns, ALOT OF CHARACTERS!!!
+			cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
+		}
+	} while (true);
+	return 0;
+} // End of Kitty Cat Test Function

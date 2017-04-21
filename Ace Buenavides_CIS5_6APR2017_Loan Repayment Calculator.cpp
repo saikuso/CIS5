@@ -9,6 +9,7 @@
 #include <iostream> // Necessary for input-output stream
 #include <cmath> // Necessary for math-related functions
 #include <limits> // Necessary for usage in the input validation void function
+#include <iomanip> // Necessary for table formatting
 
 using namespace std;
 
@@ -16,6 +17,12 @@ using namespace std;
 
 int main()
 {
+	// Variable Declarations
+	double loan_amount;
+	double interest;
+	double principle;
+	double repayment;
+	
 	// Opening Statement
 	cout << "============================================\n";
 	cout << "LOAN REPAYMENT CALCULATOR\n";
@@ -30,6 +37,26 @@ int main()
 	
 	cout << "============================================\n\n";
 
+	
+	cout << "Please enter the dollar amount of your loan: ";
+	cin >> loan_amount;
+	cout << "Please enter the starting interest rate (e.g. 1.37 for 1.37%): ";
+	cin >> interest;
+	cout << endl << endl;
+
+	cout << setw(33) << "Loan of " << loan_amount << " dollars";
+	cout << setprecision(2) << showpoint << fixed << endl << endl;
+	
+	cout << setw(42) << "Monthly Repayment" << endl << endl;
+	
+	cout << setw(42) << "Interest Rates" << endl;
+	cout << setw(5) << "Years" << setw(15) << interest << setw(15) << (interest + 0.5);
+	
+	
+	
+	
 	return 0;
 }
-	
+
+
+
