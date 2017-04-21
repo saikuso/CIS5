@@ -2,7 +2,6 @@
 *	PROGRAM TITLE: Exponentiation and GCD Functions
 *	PROGRAM VERSION: [v1.0]
 *	DATE: 18APR2017
-*	STATUS: INCOMPLETE
 */
 
 #include <iostream>
@@ -10,23 +9,10 @@
 #include <string>
 using namespace std;
 
-/* Used Variables
-
-base
-exponent
-result
-number1
-number2
-
-
-*/
-
 // Function Prototypes
-void integerPower(int x, int n);
-void gcd();
-void getInteger();
-
-// Variable Initializations
+int integerPower();
+int gcd();
+int kitty(string prompt);
 
 // Main Function
 int main()
@@ -57,8 +43,10 @@ int main()
 	
 	switch (choice)
 	{
-		case '1':	void integerPower(int x, int n); // INSERT EXPONENTIATION FUNCTION CALL HERE
-		case '2':	gcd(); // INSERT GCD FUNCTION CALL HERE
+		case '1':	cout << endl << "Your number is: " << integerPower();
+					break;
+		case '2':	cout << endl << "GCD: " << gcd();
+					break;
 		case '3':	cout << endl << "You have exited the program." << endl;
 					break;
 		default: 	cout << "You did not enter a valid choice! The program is terminating.";
@@ -69,33 +57,51 @@ int main()
 
 
 
-
-
-// Exponentiation by Squaring  Function Definition
-void integerPower(int x, int n)
+// Exponentiation by Squaring Function Definition
+int integerPower()
 {
+	int power, base;
+	
 	cout << "Please enter a number for the base: ";
-	cin >> x;
-	cout << "Please enter a number for the exponent: ";
-	cin >> n;
-	int	result = 1;
-	for ( x = 0; x < n; x++)
+	cin >> base;
+	cout << "Please enter a number for the power: ";
+	cin >> power;
+
+    int result = 1;
+    while (power > 0)
 	{
-		result = result * x;
-	}
-	return (result);
+        if (power & 1) result *= base;
+        power >>= 1;
+        base *= base;
+    }
+    return result;
 } // End of Exponentiation by Squaring Function
 
 
 // Euclid's Algorithm Function Definition
-void gcd()
+int gcd()
 {
-
+	int a, b, t;
+	
+	cout << "Input your first number: ";
+	cin >> a;
+	cout << "Input your second number: ";
+	cin >> b;
+	
+	while ( b != 0)
+	{
+		t = b;
+		b = a % b;
+		a = t;
+	}
+	
+	return a;
+	
 } // End of Euclid Function
 
 
 // Kitty Cat Test Function Definition
-int getInteger(string prompt)
+int kitty(string prompt)
 {
 	int value;
 	
@@ -135,3 +141,5 @@ int getInteger(string prompt)
 	} while (true);
 	return 0;
 } // End of Kitty Cat Test Function
+
+

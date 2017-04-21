@@ -18,10 +18,10 @@ using namespace std;
 int main()
 {
 	// Variable Declarations
-	double loan_amount;
-	double interest;
-	double principle;
-	double repayment;
+	float interest;
+	float principle;
+	float years;
+	
 	
 	// Opening Statement
 	cout << "============================================\n";
@@ -39,20 +39,53 @@ int main()
 
 	
 	cout << "Please enter the dollar amount of your loan: ";
-	cin >> loan_amount;
-	cout << "Please enter the starting interest rate (e.g. 1.37 for 1.37%): ";
+	cin >> principle;
+	cout << "Please enter the starting interest rate in (e.g. 0.0475 for 4.75%): ";
 	cin >> interest;
 	cout << endl << endl;
 
-	cout << setw(33) << "Loan of " << loan_amount << " dollars";
-	cout << setprecision(2) << showpoint << fixed << endl << endl;
+	// Formula
+	float p1 = (interest / 12); //Monthly Interest
+	float p2 = (1 + p1); 
+	float p3 = (12 * years); 
+	float p4 = pow(p2,p3);
+	float payment = principle * p1 * ( p4 / (p4-1));
+
+	cout << setprecision(2) << showpoint << fixed;
+	cout << setw(33) << "Loan of " << principle << " dollars";
+	cout << endl << endl;
 	
-	cout << setw(42) << "Monthly Repayment" << endl << endl;
 	
+	cout << setw(44) << "Monthly Repayment" << endl << endl;
+	
+	// Monthly Interest
 	cout << setw(42) << "Interest Rates" << endl;
-	cout << setw(5) << "Years" << setw(15) << interest << setw(15) << (interest + 0.5);
+	cout << setw(15) << (interest * 100) << "%";
+	cout << setw(15) << (interest * 100 + 0.5) << "%";
+	cout << setw(15) << (interest * 100 + 1) << "%";
+	cout << setw(15) << (interest * 100 + 1.5) << "%";
+	cout << setw(15) << (interest * 100 + 2) << "%";
 	
+	cout << endl << setw(5) << "Years" << endl;
 	
+	cout << setw(5) << "5" << setw(10) << payment << setw(15) <<endl;
+	cout << setw(5) << "10" << setw(10) << payment << setw(15) << endl;
+	cout << setw(5) << "15" << setw(10) << payment << setw(15) << endl;
+	cout << setw(5) << "20" << setw(10) << payment << setw(15) << endl;
+	cout << setw(5) << "25" << setw(10) << payment << setw(15) << endl;
+	cout << setw(5) << "30" << setw(10) << payment << setw(15) << endl;
+	
+	cout << endl;
+	
+	// Total Amount Paid
+	cout << setw(55) << "Total Amount Paid in Repayments" << endl;
+	
+	cout << setw(5) << "5" << setw(10) << payment << setw(15) << endl;
+	cout << setw(5) << "10" << setw(10) << payment << setw(15) << endl;
+	cout << setw(5) << "15" << setw(10) << payment << setw(15) << endl;
+	cout << setw(5) << "20" << setw(10) << payment << setw(15) << endl;
+	cout << setw(5) << "25" << setw(10) << payment << setw(15) << endl;
+	cout << setw(5) << "30" << setw(10) << payment << setw(15) << endl;
 	
 	
 	return 0;
