@@ -13,18 +13,17 @@
 
 using namespace std;
 
-
 // Function Prototypes
 float getFloat(string prompt);
-void loantable();
 
 
 int main()
 {
 	// Variable Declarations
 	float interest;
+	float ac_int;
 	float principal;
-	float years;
+	int years = 5;
 	
 	
 	// Opening Statement
@@ -48,11 +47,7 @@ int main()
 	// Starting Interest Entry
 	interest = getFloat("Enter the starting interest rate in this format\n(e.g. 0.0475 for 4.75%): ");
 	cout << "You entered " << (interest * 100) << "% as your starting interest rate\n" << endl;
-	
-	// Years Entry
-	years = getFloat("Enter how long the loan is for in years\n(e.g. 3 for 3 years): ");
-	cout << "You entered " << years << " as the length in years for the loan\n" << endl;
-	
+
 	// Formula Breakdown
 	float p1 = (interest / 12); // Monthly Interest
 	float p2 = (1 + p1); 
@@ -60,6 +55,7 @@ int main()
 	float p4 = pow(p2,p3);
 	float payment = principal * p1 * ( p4 / (p4-1)); // Monthly Payment
 
+	// Starting Point of Table
 	cout << setprecision(2) << showpoint << fixed;
 	cout << setw(33) << "Loan of " << principal << " dollars";
 	cout << endl << endl;
@@ -67,55 +63,68 @@ int main()
 	
 	cout << setw(44) << "Monthly Repayment" << endl << endl;
 	
-	// Monthly Interest
+	/* Interest Rate Headers
 	cout << setw(42) << "Interest Rates" << endl;
-	cout << setw(15) << (interest * 100) << "%";
-	cout << setw(15) << ((interest * 100) + 0.5) << "%";
-	cout << setw(15) << ((interest * 100) + 1) << "%";
-	cout << setw(15) << ((interest * 100) + 1.5) << "%";
-	cout << setw(15) << ((interest * 100) + 2) << "%";
+	float ac_int1 = (interest * 100);
+	cout << setw(15) << ac_int1 << "%";
+	float ac_int2 = ((interest * 100) + 0.5);
+	cout << setw(15) << ac_int2 << "%";
+	float ac_int3 = ((interest * 100) + 1);
+	cout << setw(15) << ac_int3 << "%";
+	float ac_int4 = ((interest * 100) + 1.5);
+	cout << setw(15) << ac_int4 << "%";
+	float ac_int5 = ((interest * 100) + 2);
+	cout << setw(15) << ac_int5 << "%" << endl;
+	*/
+	
+	// Monthly Interest
+	interest = interest * 100;
+	cout << setw(42) << "Interest Rates" << endl;
+	cout << setw(15) << interest << "%";
+	cout << setw(15) << (interest + 0.5) << "%";
+	cout << setw(15) << (interest + 1) << "%";
+	cout << setw(15) << (interest + 1.5) << "%";
+	cout << setw(15) << (interest + 2) << "%";
+
+	
+	//------FOR LOOP FOR INTEREST RATES
+	cout << endl << "Years" << endl;
+	
+	int row,column; // Table Dimensions (Iterations of Loops)
+	
+	for (row = 1; row <= 6; row++)
+	{
+		
+		for (column = 1; column <= 5; column++)
+		{
+			cout << years << setw(15) << payment;
+			interest = interest + 0.5;
+		}
+		cout << endl;
+	}
 	
 	
-	//-THIS NEEDS TO BE REDONE-------START----
-	cout << endl << setw(5) << "Years" << endl;
 	
-	cout << setw(5) << "5" << setw(10) << payment << setw(15) <<endl;
-	cout << setw(5) << "10" << setw(10) << payment << setw(15) << endl;
-	cout << setw(5) << "15" << setw(10) << payment << setw(15) << endl;
-	cout << setw(5) << "20" << setw(10) << payment << setw(15) << endl;
-	cout << setw(5) << "25" << setw(10) << payment << setw(15) << endl;
-	cout << setw(5) << "30" << setw(10) << payment << setw(15) << endl;
 	
-	cout << endl;
+	// Total Amount Paid in Repayments Headers
+	cout << setw(55) << endl << "Total Amount Paid in Repayments" << endl;
 	
-	// Total Amount Paid in Repayments
-	cout << setw(55) << "Total Amount Paid in Repayments" << endl;
-	
-	cout << setw(5) << "5" << setw(10) << payment << setw(15) << endl;
-	cout << setw(5) << "10" << setw(10) << payment << setw(15) << endl;
-	cout << setw(5) << "15" << setw(10) << payment << setw(15) << endl;
-	cout << setw(5) << "20" << setw(10) << payment << setw(15) << endl;
-	cout << setw(5) << "25" << setw(10) << payment << setw(15) << endl;
-	cout << setw(5) << "30" << setw(10) << payment << setw(15) << endl;
-	//-THIS NEEDS TO BE REDONE-------END------
+	//------FOR LOOP FOR TOTAL AMOUNT PAID
+	for (row = 1; row <= 6; row++)
+	{
+		for (column = 1; column <= 5; column++)
+		{
+			cout << years << setw(15) << payment;
+		}
+		cout << endl;
+	}
 	
 	return 0;
+	
 }
 
+
 // Function Definitions
-
-
-// Loan Repayment Table Function Definition (USE FOR LOOPS)
-void loantable()
-{
-	//for (initilize; test; update) 
-	//{
-	//	statement;
-	//}
-} // end of Loan Repayment Table Function
-
-
-
 // Kitty Cat Test Function Definition
 float getFloat(string prompt)
 {
