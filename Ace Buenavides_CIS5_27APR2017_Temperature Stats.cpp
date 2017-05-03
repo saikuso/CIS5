@@ -15,13 +15,14 @@ using namespace std;
 
 // Function Prototypes
 float getFloat(string prompt);
+float minTemp();
 
 int main()
 {
 	// Variable Declarations
-	float temp[] = {getFloat("Enter the temperature values: ")};
-	float min = temp[0];
-	float max = temp[0];
+	float tempNumbers[] = {getFloat("Enter the temperature values: ")};
+	float min = tempNumbers[];
+	float max = tempNumbers[];
 	float sum = 0.0f;
 
 	
@@ -38,8 +39,42 @@ int main()
 }
 
 
+/*--------------------
+---LECTURE CODE
+
+int min(int a[], int size)
+{
+	int smallest = a[0];
+	for (int i=0, i < size, i++)
+	{
+		if (a[i] < smallest)
+		{
+			smallest = a[i];
+		}
+		
+		return smallest;
+	}
+}
+-----------LECTURE CODE
+*/
+
 
 // Function Definitions
+//
+
+float minTemp(float tempNumbers[], int size)
+{
+	float minTemp = tempNumbers[0];
+
+	for (int i = 0; i < size; i++)
+	{
+		if (tempNumbers[i] < minTemp)
+			minTemp = tempNumbers[i];
+	}
+	return minTemp;
+}
+
+
 // Kitty Cat Test Function Definition
 float getFloat(string prompt)
 {

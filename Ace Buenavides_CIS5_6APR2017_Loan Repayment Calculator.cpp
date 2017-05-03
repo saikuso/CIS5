@@ -15,13 +15,14 @@ using namespace std;
 
 // Function Prototypes
 float getFloat(string prompt);
+void interestrates();
+void amountpaid();
 
 
 int main()
 {
 	// Variable Declarations
 	float interest;
-	float ac_int;
 	float principal;
 	int years = 5;
 	
@@ -56,28 +57,15 @@ int main()
 	float payment = principal * p1 * ( p4 / (p4-1)); // Monthly Payment
 
 	// Starting Point of Table
-	cout << setprecision(2) << showpoint << fixed;
+	cout << fixed << showpoint<< setprecision(2);
 	cout << setw(33) << "Loan of " << principal << " dollars";
 	cout << endl << endl;
 	
 	
 	cout << setw(44) << "Monthly Repayment" << endl << endl;
 	
-	/* Interest Rate Headers
-	cout << setw(42) << "Interest Rates" << endl;
-	float ac_int1 = (interest * 100);
-	cout << setw(15) << ac_int1 << "%";
-	float ac_int2 = ((interest * 100) + 0.5);
-	cout << setw(15) << ac_int2 << "%";
-	float ac_int3 = ((interest * 100) + 1);
-	cout << setw(15) << ac_int3 << "%";
-	float ac_int4 = ((interest * 100) + 1.5);
-	cout << setw(15) << ac_int4 << "%";
-	float ac_int5 = ((interest * 100) + 2);
-	cout << setw(15) << ac_int5 << "%" << endl;
-	*/
 	
-	// Monthly Interest
+	// Monthly Interest Rate Headers
 	interest = interest * 100;
 	cout << setw(42) << "Interest Rates" << endl;
 	cout << setw(15) << interest << "%";
@@ -85,11 +73,9 @@ int main()
 	cout << setw(15) << (interest + 1) << "%";
 	cout << setw(15) << (interest + 1.5) << "%";
 	cout << setw(15) << (interest + 2) << "%";
-
-	
-	//------FOR LOOP FOR INTEREST RATES
 	cout << endl << "Years" << endl;
 	
+	// Monthly Interest Rate Values	
 	int row,column; // Table Dimensions (Iterations of Loops)
 	
 	for (row = 1; row <= 6; row++)
@@ -97,28 +83,33 @@ int main()
 		
 		for (column = 1; column <= 5; column++)
 		{
-			cout << years << setw(15) << payment;
+			cout << fixed << showpoint;
+			cout << setprecision(2);
+			cout << years;
+			cout << fixed << showpoint;
+			cout << setprecision(2);
+			cout << setw(10) << fixed << showpoint << setprecision(2) << payment;
 			interest = interest + 0.5;
 		}
 		cout << endl;
 	}
 	
-	
-	
-	
 	// Total Amount Paid in Repayments Headers
 	cout << setw(55) << endl << "Total Amount Paid in Repayments" << endl;
 	
-	//------FOR LOOP FOR TOTAL AMOUNT PAID
+	// Total Amount Paid Values
 	for (row = 1; row <= 6; row++)
 	{
+		
 		for (column = 1; column <= 5; column++)
 		{
+			cout << fixed << showpoint<< setprecision(2);
 			cout << years << setw(15) << payment;
 		}
 		cout << endl;
 	}
-	
+
+
 	return 0;
 	
 }
@@ -169,5 +160,20 @@ float getFloat(string prompt)
 
 
 
+/* 
+//-----------DUMMY CODE
 
-
+ 	/* Interest Rate Headers
+	cout << setw(42) << "Interest Rates" << endl;
+	float ac_int1 = (interest * 100);
+	cout << setw(15) << ac_int1 << "%";
+	float ac_int2 = ((interest * 100) + 0.5);
+	cout << setw(15) << ac_int2 << "%";
+	float ac_int3 = ((interest * 100) + 1);
+	cout << setw(15) << ac_int3 << "%";
+	float ac_int4 = ((interest * 100) + 1.5);
+	cout << setw(15) << ac_int4 << "%";
+	float ac_int5 = ((interest * 100) + 2);
+	cout << setw(15) << ac_int5 << "%" << endl;
+//--------END OF DUMMY CODE
+*/
