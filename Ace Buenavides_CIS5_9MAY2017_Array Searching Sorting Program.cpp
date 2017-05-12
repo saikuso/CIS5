@@ -1,6 +1,7 @@
 /*	PROGRAMMER NAME: Ace Buenavides
-*	PROGRAM TITLE: Array Searching/Sorting Program
+*	PROGRAM TITLE: Array Searching/Sorting Program [v.1]
 *	DATE: 9 MAY 2017
+*	DUE: 30 MAY 2017
 */
 
 #include <iostream>
@@ -17,9 +18,8 @@ using namespace std;
 // Variable Tracker
 /*
 const int SZ // Array Size
-
-
-
+int fill_random[SZ] // Array with constant size
+int maxrange // User-defined max randomly generated number range
 */
 
 // Main Function
@@ -44,18 +44,35 @@ int main ()
 	cout << "============================================\n\n";
 
 	// Variable Declarations
-	const int SZ = 50 
+	const int SZ = 50
+	int maxrange;
 	
+	// Declare array 'fill_random' of size SZ
 	int fill_random[SZ];
-	// prompt for N...
-	// seed random # generator
-	for (int i=0; i< 50; i++)
+	
+	
+	// Prompt for the max range for the numbers to be generated
+	cout << "Please enter the maximum number for the range that will be randomly generated: " << endl;
+	cin >> maxrange;
+	
+	// Random Number Generator
+	srand ( time(0) + SZ ) // Seeds the random number generator
+	
+	// Fill array 'fill_random' with SZ random numbers and user declared max
+	for (int i=0; i< SZ; i++)
 	{
-		fill_random[i]=(rand()% N)+1;
+		fill_random[i]=(rand()% maxrange)+1;
 	}
+	
+	// Displays the output of random numbers (pre-sorted)
 	displayList(fill_random, SZ)
+	
+	// Executes Bubble Sort on Array 'fill_random'
 	sort(fill_random, SZ)
+	
+	// Displays the output of random numbers (post-sorted)
 	displayList(fill_random, SZ)
+	
 	// prompt for search value
 	// do binary search
 }
