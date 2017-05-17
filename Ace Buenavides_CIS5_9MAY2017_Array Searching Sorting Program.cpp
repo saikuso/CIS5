@@ -13,7 +13,9 @@
 using namespace std;
 
 // Function Prototypes
-
+int getInteger(string prompt); // Kitty Cat Proof
+void displayList(int fill_random[], const int SZ); // Output Array Values
+void sort(int fill_random[], const int SZ); // Heap Sort
 
 // Variable Tracker
 /*
@@ -44,19 +46,18 @@ int main ()
 	cout << "============================================\n\n";
 
 	// Variable Declarations
-	const int SZ = 50
+	const int SZ = 50;
 	int maxrange;
 	
 	// Declare array 'fill_random' of size SZ
 	int fill_random[SZ];
 	
-	
 	// Prompt for the max range for the numbers to be generated
-	cout << "Please enter the maximum number for the range that will be randomly generated: " << endl;
-	cin >> maxrange;
+	maxrange = getInteger("Please enter the maximum integer that will be randomly generated: ");
+	cout << "You entered " << maxrange << " as your maximum number\n" << endl;
 	
 	// Random Number Generator
-	srand ( time(0) + SZ ) // Seeds the random number generator
+	srand ( time(0) + SZ ); // Seeds the random number generator
 	
 	// Fill array 'fill_random' with SZ random numbers and user declared max
 	for (int i=0; i< SZ; i++)
@@ -65,23 +66,31 @@ int main ()
 	}
 	
 	// Displays the output of random numbers (pre-sorted)
-	displayList(fill_random, SZ)
+	displayList(fill_random, SZ);
 	
 	// Executes Bubble Sort on Array 'fill_random'
-	sort(fill_random, SZ)
+	sort(fill_random, SZ);
+	
+	// Progress Marker (Array Sorted)
+	cout << "The array has just been sorted by bubble sort at this point.\n\n";
 	
 	// Displays the output of random numbers (post-sorted)
-	displayList(fill_random, SZ)
+	displayList(fill_random, SZ);
 	
+	
+	// STEPS OF THE PROGRAM TO BE DONE
 	// prompt for search value
 	// do binary search
-}
+	
+	
+	return 0;
+} // End of Main Function
 
 
-// FUNCTION DEFINITIONS
+// Function Definitions
 
 // Kitty Cat Test (Integer) Function (DONE)
-int getInteger(string prompt) // EX CALL: getInteger("INSERT PROMPT: ")
+int getInteger(string prompt)
 {
 	int value;
 	
@@ -106,7 +115,53 @@ int getInteger(string prompt) // EX CALL: getInteger("INSERT PROMPT: ")
 } // end of getInteger function
 
 
-// FUNCTION FOR BINARY SEARCH (ELEMENTS HAVE TO BE SORTED)
+// displayList (Output) Function (DONE)
+void displayList (int fill_random[], const int SZ)
+{
+	for (int i=0; i<SZ; i++)
+	{
+		cout << fill_random[i] << ", ";
+		if ((i + 1) % 10 == 0)
+		{
+			cout << endl;
+		}
+	}
+	cout << "\b\b " << endl;
+} // end of displayList function
+
+
+// Bubble Sort Function (DONE)
+void sort (int fill_random[], const int SZ)
+{
+	bool swapped = false;
+	int holder;
+	
+	do
+	{
+		swapped = false;
+		for (int i=0; i < (SZ-1); i++)
+		{
+			if (fill_random[i] > fill_random[i+1])
+			{
+				holder = fill_random[i];
+				fill_random[i] = fill_random[i+1];
+				fill_random[i+1] = holder;
+				swapped=true;
+			}
+		}
+	} while(swapped);
+} // end of bubble sort function
+
+
+// Swap Array Elements Function
+void swap(int &a, int &b)
+{
+	int t = a;
+	a = b;
+	b = t;
+} // end of swap function
+
+// Binary Search Function (Elements have to be sorted)
 int binarySearch(int array[], int size, int value)
 {
 	int first = 0,						// First array element
@@ -131,47 +186,6 @@ int binarySearch(int array[], int size, int value)
 	return position;
 }
 
-
-// FUNCTION FOR BUBBLE SORTING
-sort (int a[], int SZ)
-{
-	for (int i=0; i < (SZ-1); i++)
-	{
-		for (int j=1; j < SZ; j++)
-		{
-			if (a[i] ?? a[j])
-				swap (a[i],[a[j])
-		}
-	}
-} // end of sort function
-
-// FUNCTION FOR OUTPUTTING ELEMENTS FROM ARRAY
-void output (const int a[], int sz)
-{
-	for (int i=0; i<sz; i++)
-	{
-		cout << a[i] << ", ";
-	}
-	cout << "\b\b " << endl;
-} // end of output function
-
-// FUNCTION FOR FILLING ARRAY WITH RANDOM NUMBERS
-void fill_random(int a[], int sz)
-{
-	srand(time(0)+SZ); // seed is time(0) + size of array
-	for (int i=0; i<SZ; i++)
-	{
-		a[i] = rand() % SZ;
-	}
-} // end of fill_random function
-
-// FUNCTION FOR SWAPPING ARRAY ELEMENTS
-void swap(int &a, int &b)
-{
-	int t = a;
-	a = b;
-	b = t;
-} // end of swap function
 
 
 
