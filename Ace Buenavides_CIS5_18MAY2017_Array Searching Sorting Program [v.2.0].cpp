@@ -17,7 +17,7 @@ using namespace std;
 int getInteger(string prompt); // Kitty Cat Proof
 void displayList(int fill_random[], const int SZ); // Output Array Values
 void sort(int fill_random[], const int SZ); // Heap Sort
-int binarySearch(int fill_random[], const int SZ, int searchtarget);
+int binarySearch(int fill_random[], const int SZ, int searchtarget); // Binary Search
 
 // Variable Tracker
 /*
@@ -26,6 +26,7 @@ int fill_random[SZ] 	// Array variable containing numbers
 int maxrange 			// User-defined max randomly generated number range
 int searchtarget 		// Holds user selected search value
 int searchresult		// Holds the result of the binary search function
+int holder				// Bubble sort holding variable
 */
 
 // Main Function
@@ -33,7 +34,7 @@ int main ()
 {
 	// Opening Statement
 	cout << "============================================\n";
-	cout << "ARRAY SEARCHING/SORTING PROGRAM\n";
+	cout << "ARRAY SEARCHING/SORTING PROGRAM [v.2.0]\n";
 	cout << "============================================\n\n";
 	
 	cout << "Welcome to this array searching/sorting program.\n";
@@ -70,6 +71,8 @@ int main ()
 	{
 		fill_random[i]=(rand()% maxrange)+1;
 	}
+	
+	cout << "The array is being generated with random numbers.\n" << endl;
 	
 	// Displays the output of random numbers (pre-sorted)
 	displayList(fill_random, SZ);
@@ -157,7 +160,7 @@ void sort (int fill_random[], const int SZ)
 		swapped = false;
 		for (int i=0; i < (SZ-1); i++)
 		{
-			if (fill_random[i] > fill_random[i+1])
+			if (fill_random[i] < fill_random[i+1])
 			{
 				holder = fill_random[i];
 				fill_random[i] = fill_random[i+1];
@@ -194,7 +197,7 @@ int binarySearch(int fill_random[], const int SZ, int searchtarget)
 			found = true;
 			position = middle;
 		}
-		else if (fill_random[middle] > searchtarget)
+		else if (fill_random[middle] < searchtarget)
 			last = middle - 1;
 		else
 			first = middle + 1;
