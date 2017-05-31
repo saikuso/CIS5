@@ -24,12 +24,10 @@ int main()
 	float interest;
 	float principal;
 	int years = 5;
-	const int ROW = 5; // 6 Indexes
-	const int COLUMN = 5; // 6 Indexes
+	const int ROW = 6; // 6 Indexes
+	const int COLUMN = 6; // 6 Indexes
 	
-	// Array Declarations
-	float interestRates [ROW][COLUMN]; // Declares the array "interestRates" with 6 rows and 6 columns
-	
+
 	// Opening Statement
 	cout << "============================================\n";
 	cout << "LOAN REPAYMENT CALCULATOR\n";
@@ -78,14 +76,18 @@ int main()
 	cout << setw(14) << (interest + 2) << "%";
 	cout << endl << "Years" << endl;
 	
-
+	// Array Declarations
+	float interestRates [ROW][COLUMN] = { years + 5, (payment * interest) }; // Declares the array "interestRates" with 6 rows and 6 columns
+	
 	// Monthly Interest Rate Values	
 	for (int i=0; i<ROW; i++) // This loops on the rows
 	{
 		for (int j=0; j<COLUMN; j++) // This loops on the columns
 		{
-			cout << "Test";
+			cout << setw(14) << fixed << showpoint << setprecision(2);
+			cout << interestRates[ROW][COLUMN] << " ";
 		}
+		cout << endl;
 	}
 
 	// Total Amount Paid in Repayments Headers
